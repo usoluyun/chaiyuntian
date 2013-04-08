@@ -1,0 +1,21 @@
+﻿<Window x:Class="wpf_test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="504" Width="536" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Loaded="Window_Loaded">
+    <Grid Height="404" Width="417">
+       
+            <Label Content="Label" Height="29" HorizontalAlignment="Left" Margin="96,38,0,0" Name="label1" VerticalAlignment="Top" Width="125" />
+            <Button Content="1" Height="35" HorizontalAlignment="Left" Margin="96,118,0,0" Name="N1" VerticalAlignment="Top" Width="43" Click="N1_Click" />
+            <Button Content="2" Height="35" HorizontalAlignment="Left" Margin="163,118,0,0" Name="N2" VerticalAlignment="Top" Width="43" Click="N2_Click" />
+            <Button Content="3" Height="35" HorizontalAlignment="Left" Margin="236,118,0,0" Name="N3" VerticalAlignment="Top" Width="43" Click="N3_Click" />
+            <Button Content="4" Height="35" HorizontalAlignment="Left" Margin="96,184,0,0" Name="N4" VerticalAlignment="Top" Width="43" Click="N4_Click" />
+            <Button Content="5" Height="35" HorizontalAlignment="Left" Margin="163,184,0,0" Name="N5" VerticalAlignment="Top" Width="43" Click="N5_Click" />
+            <Button Content="6" Height="35" HorizontalAlignment="Left" Margin="236,184,0,0" Name="N6" VerticalAlignment="Top" Width="43" Click="N6_Click" />
+            <Button Content="7" Height="35" HorizontalAlignment="Left" Margin="96,244,0,0" Name="N7" VerticalAlignment="Top" Width="43" Click="N7_Click" />
+            <Button Content="8" Height="35" HorizontalAlignment="Left" Margin="163,244,0,0" Name="N8" VerticalAlignment="Top" Width="43" Click="N8_Click" />
+            <Button Content="9" Height="35" HorizontalAlignment="Left" Margin="236,244,0,0" Name="N9" VerticalAlignment="Top" Width="43" Click="N9_Click" />
+            <Button Content="&lt;-" Height="35" HorizontalAlignment="Left" Margin="236,32,0,0" Name="back" VerticalAlignment="Top" Width="43" Click="back_Click" />
+            <Button Content="&lt;-" Height="35" HorizontalAlignment="Left" Margin="163,296,0,0" Name="button1" VerticalAlignment="Top" Width="43" Click="button1_Click" />
+        
+    </Grid>
+</Window>
