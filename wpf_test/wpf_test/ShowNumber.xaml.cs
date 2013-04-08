@@ -44,14 +44,12 @@ namespace wpf_test
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            Sound s = new Sound();
+            string format = "wav";
             string[] kk = { "59", "60", "61" };
-           
-            //s.PlaySequence(kk,"wav",100);
 
-            MediaPlayer[] SP = new MediaPlayer[kk.Length];
+            Sound s = new Sound(kk.Select(f => f + "." + format).ToArray());
 
-            s.PlaySequence(kk, "wav", 100);
+            s.PlaySequence();
 
         }
     }

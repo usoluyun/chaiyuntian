@@ -5,56 +5,88 @@ using System.Linq;
 using System.Text;
 using System.Media;
 using System.Windows.Media;
-  
+
 namespace common
-{       
-
-     
-    class Sound
+{
+    public class Sound
     {
-             
-         public void PlaySound(string s,string format)
+        #region private member
+
+        private MediaPlayer SP = new MediaPlayer();
+
+        #endregion
+
+        #region properties
+
+        private Queue<string> mediaFileQueue = new Queue<string>();
+
+        public Queue<string> MediaFileQueue
         {
-
-            MediaPlayer SP = new MediaPlayer();
-                
-         
-             
-             try
-            {
-                //System.IO.Directory.GetCurrentDirectory() + "\\" +
-                 SP.Open(new System.Uri( s + "." + format,UriKind.Relative));
-                 SP.Play();
-
-            }
-
-            catch (System.IO.FileNotFoundException ex)
-            {
-            }
-
-            catch(FormatException ex)
-            {
-            }
-            
+            get { return mediaFileQueue; }
+            set { mediaFileQueue = value; }
         }
 
-       
 
-        public void PlaySequence(string[] s,string format,int interval)
+        #endregion
+        #region constr
+
+        public Sound(string[] filenames)
         {
+            SP.MediaFailed += SP_MediaFailed;
+            SP.MediaOpened += SP_MediaOpened;
+            SP.MediaEnded += SP_MediaEnded;
 
-
-            for (int i = 0; i < s.Length; i++)
+            foreach (var f in filenames)
             {
-                PlaySound(s[i],format);
-
+                MediaFileQueue.Enqueue(f);
             }
         }
 
+        #endregion
+
+        #region event handler
+
+        void SP_MediaOpened(object sender, EventArgs e)
+        {
+            // add opened logic here
         }
 
+        void SP_MediaFailed(object sender, ExceptionEventArgs e)
+        {
+            throw new Exception("file open failed");
+        }
+
+        void SP_MediaEnded(object sender, EventArgs e)
+        {
+            PlaySequence();
+        }
+        #endregion
+        
+        public void PlaySequence()
+        {
+            string fileName = MediaFileQueue.Dequeue();
+
+            PlaySound(fileName);
+        }
+
+        public void PlaySound(string fileName)
+        {
+            try
+            {
+                    SP.Open(new System.Uri(fileName, UriKind.Relative));
+                    SP.Play();
+            }
+            catch (FileNotFoundException)
+            {
+            }
+
+            catch (FormatException)
+            {
+            }
+        }
 
     }
+}
 
    
 
